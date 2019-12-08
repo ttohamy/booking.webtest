@@ -43,22 +43,21 @@ public class HomePage extends PageBase {
     @FindBy(css="div.sr-cta-button-row")
     WebElement seeAvButton ;
 
-
-
-
-
-	public void openRegisterPage() {
+    public void openRegisterPage() {
 		click(registerButton);
 	}
+    
 	public void logout() {
 		wait.until(ExpectedConditions.visibilityOf(currentAccountIcon));
 		click(currentAccountIcon);
 		wait.until(ExpectedConditions.visibilityOf(logoutButton));
 		click(logoutButton);
 	}
+	
 	public void openSignInPage() {
 		click(signInButton);
 	}
+	
 	public void selectLocation() {
 		wait.until(ExpectedConditions.visibilityOf(locationSearchTextField));
 		addTextToElement(locationSearchTextField,"sharm");
@@ -78,23 +77,24 @@ public class HomePage extends PageBase {
 		wait.until(ExpectedConditions.visibilityOf(addChildButton));
 		click(addChildButton);
 		click(searchButton);
-
 	}
+	
 	public boolean isHotelAppears(WebDriver currentDriver , String hotelName) throws InterruptedException {
 		boolean finded = false;
 		wait.until(ExpectedConditions.visibilityOf(paginationNextButton));
-		while(paginationNextButton.isEnabled()) {
+
+		while(!paginationNextButton.getAttribute("class").contains("bui-pagination__item--disabled")) {
 			Thread.sleep(2000);
 			if(currentDriver.getPageSource().contains(hotelName)) {
 				System.out.println("i am here!!");
 				clickLinkByHref(currentDriver , "albatros-aqua-park-sharm-el-sheikh.html");
-				Thread.sleep(7000);
 				finded = true;
 				break;
 			}
 			click(paginationNextButton);
 			
 		}
+		
 		return finded;
 	}
 	

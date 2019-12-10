@@ -16,7 +16,7 @@ public class SearchTest extends TestBase {
 		homeObject = new HomePage(driver);
 		hotelPage = new HotelDetailsPage(driver);
 		homeObject.selectLocation();
-		homeObject.selectDate();
+		homeObject.selectDate();		
 		homeObject.selectRoomGuests();
 		Thread.sleep(2000);
 		boolean isHotelFinded = homeObject.isHotelAppears(driver,hotelName);
@@ -29,7 +29,7 @@ public class SearchTest extends TestBase {
 			softAssertion.assertTrue(hotelPage.checkRoomAvailability());
 		}
 		else {
-			System.out.println("Really I couldn't find the Hotel");
+			System.out.println("really I couldn't find the Hotel");
 		}
 
 

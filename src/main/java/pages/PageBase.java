@@ -42,9 +42,9 @@ public class PageBase {
         List<WebElement> anchors = driver.findElements(By.tagName("a"));
         java.util.Iterator<WebElement> i = anchors.iterator();
         while(i.hasNext()) {
-            WebElement anchor = i.next();
-            if(anchor.getAttribute("href").contains(href)) {
-                anchor.click();
+			WebElement anchor = i.next();
+			if(anchor.getAttribute("href").contains(href)) {
+				anchor.click();
                 break;
             }
         }

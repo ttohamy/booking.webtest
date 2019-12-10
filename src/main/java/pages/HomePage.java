@@ -59,7 +59,6 @@ public class HomePage extends PageBase {
 	}
 	
 	public void selectLocation() {
-//		wait.until(ExpectedConditions.visibilityOf(locationSearchTextField));
 		wait.until(ExpectedConditions.elementToBeClickable(locationSearchTextField));
 		addTextToElement(locationSearchTextField,"sharm");
 		wait.until(ExpectedConditions.elementToBeClickable(sharmButton));
@@ -79,17 +78,16 @@ public class HomePage extends PageBase {
 		wait.until(ExpectedConditions.elementToBeClickable(addChildButton));
 		click(addChildButton);
 		click(searchButton);
-		System.out.println("Headless is perfect");
 	}
 	
 	public boolean isHotelAppears(WebDriver currentDriver , String hotelName) throws InterruptedException {
 		boolean finded = false;
 		wait.until(ExpectedConditions.elementToBeClickable(paginationNextButton));
-
 		while(!paginationNextButton.getAttribute("class").contains("bui-pagination__item--disabled")) {
-			Thread.sleep(2000);
+			wait.until(ExpectedConditions.elementToBeClickable(paginationNextButton));
 			if(currentDriver.getPageSource().contains(hotelName)) {
-				clickLinkByHref(currentDriver , "sunrise-arabian-beach-resort.html");
+				wait.until(ExpectedConditions.elementToBeClickable(paginationNextButton));
+				clickLinkByHref(currentDriver , "sunrise-arabian-beach-resort");
 				finded = true;
 				break;
 			}
@@ -97,7 +95,9 @@ public class HomePage extends PageBase {
 			
 		}
 		
+		wait.until(ExpectedConditions.elementToBeClickable(paginationNextButton));
 		return finded;
+
 	}
 	
 	

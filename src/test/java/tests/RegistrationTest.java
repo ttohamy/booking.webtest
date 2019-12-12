@@ -51,7 +51,6 @@ public class RegistrationTest extends TestBase {
 		signInObject.login(email, password);
 		assertTrue(homeObject.currentAccountIcon.isDisplayed());
 		System.out.println("You Logged in successfully!");
-
 	}
 
 }

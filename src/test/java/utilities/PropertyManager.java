@@ -28,7 +28,8 @@ public class PropertyManager {
         prop.load(new FileInputStream(propertyFilePath));
         }catch(IOException e) {
         	System.out.println("Configuration properties file cannot be found");
-        }
+			System.out.println(propertyFilePath);
+		}
         firstname = prop.getProperty("firstname");
         lastname = prop.getProperty("lastname");
         password = prop.getProperty("password");

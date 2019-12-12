@@ -44,27 +44,27 @@ public class RegistrationPage extends PageBase {
 	}
 	public void fillPasswordAndConfirmedPassword(String password)
 	{
-		wait.until(ExpectedConditions.visibilityOf(passwordTextField));
+		wait.until(ExpectedConditions.elementToBeClickable(passwordTextField));
 		addTextToElement(passwordTextField, password);	
-		wait.until(ExpectedConditions.visibilityOf(confirmedPasswordTextField));
+		wait.until(ExpectedConditions.elementToBeClickable(confirmedPasswordTextField));
 		addTextToElement(confirmedPasswordTextField, password);
 		click(createAccountButton);
 	}
 	
 	public void fillFirstAndLastName(String firstname, String lastname) {
-		wait.until(ExpectedConditions.visibilityOf(firstnameTextField));
+		wait.until(ExpectedConditions.elementToBeClickable(firstnameTextField));
 		addTextToElement(firstnameTextField, firstname);
 		addTextToElement(lastnameTextField, lastname);
 		click(continueButton);
 	}
 	public void fillPhoneNumber(String phoneNumber) {
-		wait.until(ExpectedConditions.visibilityOf(phoneNumberTextField));
+		wait.until(ExpectedConditions.elementToBeClickable(phoneNumberTextField));
 		addTextToElement(phoneNumberTextField,phoneNumber );
-		wait.until(ExpectedConditions.visibilityOf(phoneNumberContinueButton));
+		wait.until(ExpectedConditions.elementToBeClickable(phoneNumberContinueButton));
 		click(phoneNumberContinueButton);
 	}
 	public void finishRegistration() {
-		wait.until(ExpectedConditions.visibilityOf(finishRegistrationButton));
+		wait.until(ExpectedConditions.elementToBeClickable(finishRegistrationButton));
 		click(finishRegistrationButton);
 	}
 

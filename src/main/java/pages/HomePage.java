@@ -59,35 +59,35 @@ public class HomePage extends PageBase {
 	}
 	
 	public void selectLocation() {
-		wait.until(ExpectedConditions.visibilityOf(locationSearchTextField));
+		wait.until(ExpectedConditions.elementToBeClickable(locationSearchTextField));
 		addTextToElement(locationSearchTextField,"sharm");
-		wait.until(ExpectedConditions.visibilityOf(sharmButton));
+		wait.until(ExpectedConditions.elementToBeClickable(sharmButton));
 		click(sharmButton);
 	}
 	public void selectDate() {
-		wait.until(ExpectedConditions.visibilityOf(calenderRow));
+		wait.until(ExpectedConditions.elementToBeClickable(calenderRow));
+		
 		List<WebElement> columns = calenderRow.findElements(By.tagName("td"));
-		wait.until(ExpectedConditions.visibilityOf(columns.get(0)));
+		wait.until(ExpectedConditions.elementToBeClickable(columns.get(0)));
 		columns.get(0).click();
 		columns.get(3).click();	
 	}
 	public void selectRoomGuests() {
-		wait.until(ExpectedConditions.visibilityOf(roomGuests));
+		wait.until(ExpectedConditions.elementToBeClickable(roomGuests));
 		click(roomGuests);
-		wait.until(ExpectedConditions.visibilityOf(addChildButton));
+		wait.until(ExpectedConditions.elementToBeClickable(addChildButton));
 		click(addChildButton);
 		click(searchButton);
 	}
 	
 	public boolean isHotelAppears(WebDriver currentDriver , String hotelName) throws InterruptedException {
 		boolean finded = false;
-		wait.until(ExpectedConditions.visibilityOf(paginationNextButton));
-
+		wait.until(ExpectedConditions.elementToBeClickable(paginationNextButton));
 		while(!paginationNextButton.getAttribute("class").contains("bui-pagination__item--disabled")) {
-			Thread.sleep(2000);
+			wait.until(ExpectedConditions.elementToBeClickable(paginationNextButton));
 			if(currentDriver.getPageSource().contains(hotelName)) {
-				System.out.println("i am here!!");
-				clickLinkByHref(currentDriver , "albatros-aqua-park-sharm-el-sheikh.html");
+				wait.until(ExpectedConditions.elementToBeClickable(paginationNextButton));
+				clickLinkByHref(currentDriver , "sunrise-arabian-beach-resort");
 				finded = true;
 				break;
 			}
@@ -95,7 +95,9 @@ public class HomePage extends PageBase {
 			
 		}
 		
+		wait.until(ExpectedConditions.elementToBeClickable(paginationNextButton));
 		return finded;
+
 	}
 	
 	

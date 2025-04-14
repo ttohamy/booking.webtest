@@ -49,6 +49,7 @@ public class HomePage extends PageBase {
     
 	public void logout() {
 		wait.until(ExpectedConditions.visibilityOf(currentAccountIcon));
+		
 		click(currentAccountIcon);
 		wait.until(ExpectedConditions.visibilityOf(logoutButton));
 		click(logoutButton);
